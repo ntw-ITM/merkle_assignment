@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { fetchItem, fetchTopStories, fetchUser } from './hackernewsAPI'
-import { Story } from './story'
+import { Story } from '../types/story'
 
 
 export interface NewsState {
