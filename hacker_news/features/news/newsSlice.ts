@@ -20,7 +20,7 @@ export const fetchTopStoriesAsync = createAsyncThunk(
         const storyItems = (await fetchTopStories()).slice(0, length);
         const stories = await Promise.all(storyItems.map(async (id: number): Promise<Story> => {
             const storyItem = await fetchItem(id);
-            const authorItem = await fetchUser(storyItem.by);
+            const authorItem = await fetchUser(storyItem.by) ?? {id: 'author not found', karma: 0}
             return {
                 id: storyItem.id,
                 title: storyItem.title,
@@ -31,10 +31,10 @@ export const fetchTopStoriesAsync = createAsyncThunk(
                 author: {
                     id: authorItem.id,
                     karma: authorItem.karma,
-                }
+                },
             }
         }));
-
+        console.log(stories);
         return stories;
     }
 )

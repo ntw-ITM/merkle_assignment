@@ -2,12 +2,14 @@ import type { NextPage } from 'next'
 import { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../app/store'
 import { fetchTopStoriesAsync } from '../features/news/newsSlice'
+import StoryCard from '../features/news/storyCard'
 import styles from '../styles/Home.module.css'
 
 const Home: NextPage = () => {
   const dispatch = useAppDispatch()
   const stories = useAppSelector(state => state.news.stories);
   const storiesStatus = useAppSelector(state=> state.news.status);
+  const storiesError = useAppSelector(state=> state.news.error);
 
   const storiesCount = 10;
 
@@ -17,12 +19,16 @@ const Home: NextPage = () => {
     }
   }, [dispatch, storiesStatus])
 
+  useEffect(() => {
+    console.log(stories);
+    console.log(storiesStatus);
+    console.log(storiesError);
+  }, [stories, storiesStatus, storiesError])
+
   return (
-    <div className={styles.container}>
-        {storiesStatus != 'succeeded' && <p>fetching...</p>}
-      <ul>
-        {storiesStatus == 'succeeded' && stories.map(story => (<li key={story.id}>{story.title}</li>))}
-      </ul>
+    <div>
+      {storiesStatus != 'succeeded' && <p>fetching...</p>}
+       {/* {storiesStatus == 'succeeded' && stories.map(story => <StoryCard story={story} key={story.id} />)} */}
     </div>
   )
 }
