@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../app/store'
+import Header from '../components/layout/header'
 import { fetchTopStoriesAsync } from '../features/news/newsSlice'
 import StoryCard from '../features/news/storyCard'
 import styles from '../styles/Home.module.css'
@@ -26,10 +27,18 @@ const Home: NextPage = () => {
   }, [stories, storiesStatus, storiesError])
 
   return (
-    <div>
+    <>
+    <Header />
+    {/* <div>
       {storiesStatus != 'succeeded' && <p>fetching...</p>}
-       {/* {storiesStatus == 'succeeded' && stories.map(story => <StoryCard story={story} key={story.id} />)} */}
+       {storiesStatus == 'succeeded' && stories.map(story => <StoryCard story={story} key={story.id} />)}
+    </div> */}
+    <div className="container">
+      <section className="card-container">
+        {storiesStatus == 'succeeded' && stories.map((story, i) => <StoryCard story={story} key={story.id} index={i}/>)}
+      </section>
     </div>
+    </>
   )
 }
 
