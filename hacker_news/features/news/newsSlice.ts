@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice, current } from '@reduxjs/toolkit'
 import { fetchItem, fetchTopStories, fetchUser } from './hackernewsAPI'
 import { Story } from './types/story'
 
@@ -14,10 +14,21 @@ const initialState: NewsState = {
   status: 'idle',
 }
 
-export const fetchTopStoriesAsync = createAsyncThunk(
+//Used to get random top stories
+const shuffleArray = (arr: any[]) => {
+  let currentIndex = arr.length, randomIndex;
+  while (currentIndex != 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+    [arr[currentIndex], arr[randomIndex]] = [arr[randomIndex], arr[currentIndex]];
+  }
+  return arr;
+}
+
+export const fetchRandomTopStoriesAsync = createAsyncThunk(
     'news/fetchTopStories',
     async (length: number) => {
-        const storyItems = (await fetchTopStories()).slice(0, length);
+        const storyItems = shuffleArray((await fetchTopStories())).slice(0, length);
         const stories = await Promise.all(storyItems.map(async (id: number): Promise<Story> => {
             const storyItem = await fetchItem(id);
             const authorItem = await fetchUser(storyItem.by) ?? {id: 'author not found', karma: 0}
@@ -47,14 +58,14 @@ export const newsSlice = createSlice({
     },
     extraReducers(builder) {
         builder
-          .addCase(fetchTopStoriesAsync.pending, (state, action) => {
+          .addCase(fetchRandomTopStoriesAsync.pending, (state, action) => {
             state.status = 'loading'
           })
-          .addCase(fetchTopStoriesAsync.fulfilled, (state, action) => {
+          .addCase(fetchRandomTopStoriesAsync.fulfilled, (state, action) => {
             state.status = 'succeeded'
             state.stories = action.payload;
           })
-          .addCase(fetchTopStoriesAsync.rejected, (state, action) => {
+          .addCase(fetchRandomTopStoriesAsync.rejected, (state, action) => {
             state.status = 'failed'
             state.error = action.error.message
           })
