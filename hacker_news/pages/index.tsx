@@ -35,7 +35,7 @@ const Home: NextPage = () => {
     </div> */}
     <div className="container">
       <section className="card-container">
-        {storiesStatus == 'succeeded' && stories.map((story, i) => <StoryCard story={story} key={story.id} index={i}/>)}
+        {storiesStatus == 'succeeded' && [...stories].sort((a, b) => a.score - b.score).map((story, i) => <StoryCard story={story} key={story.id} index={i}/>)}
       </section>
     </div>
     </>
