@@ -20,12 +20,6 @@ const Home: NextPage = () => {
     }
   }, [dispatch, storiesStatus])
 
-  useEffect(() => {
-    console.log(stories);
-    console.log(storiesStatus);
-    console.log(storiesError);
-  }, [stories, storiesStatus, storiesError])
-
   return (
     <>
     <Header />
