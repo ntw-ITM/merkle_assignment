@@ -1,10 +1,6 @@
-import { FC, useState, useCallback, useEffect, useContext } from 'react';
+import { FC } from 'react';
 
-interface Props {
-  
-};
-
-const Navbar: FC<Props> = ({}) => {
+const Navbar: FC = () => {
 
   return (
     <nav className="navbar">
