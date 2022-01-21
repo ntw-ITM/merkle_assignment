@@ -1,0 +1,77 @@
+@use '../abstracts/colors';
+
+$border:.1rem solid rgba(0,0,0,.1);
+
+.header{
+    // position: fixed;
+    // top:0; left:0; right:0;
+    z-index: 1000;
+    background: colors.$white;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding:2rem 9%;
+    margin-bottom: 2rem;
+  
+    .logo{
+      font-size: 2.5rem;
+      font-weight: bolder;
+      color: colors.$black;
+  
+      i{
+        color: colors.$green;
+        padding-right: .5rem;
+      }
+    }
+  
+    .navbar{
+  
+      a{
+        font-size: 1.7rem;
+        color: colors.$light-color;
+        margin:0 1rem;
+  
+        &:hover{
+          color: colors.$green;
+        }
+      }
+    }
+  
+    .icons div{
+      font-size: 2.5rem;
+      margin-left: 1.7rem;
+      cursor: pointer;
+      color: colors.$light-color;
+  
+      &:hover{
+        color: colors.$green;
+      }
+    } 
+  }
+
+  @media (max-width:768px){
+    .header{
+      .navbar{
+        position: absolute;
+        top:99%; left:0; right:0;
+        background: colors.$white;
+        border-top: $border;
+        border-bottom: $border;
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  
+        &.active{
+          clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+        }
+  
+        a{
+          margin:1.5rem;
+          padding:1.5rem;
+          background: colors.$light-bg;
+          font-size: 2rem;
+          display: block;
+          border-radius: .5rem;
+        }
+      }
+    }
+  }

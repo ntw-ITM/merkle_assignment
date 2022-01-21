@@ -1,0 +1,20 @@
+@use '../abstracts/breakpoints.scss';
+
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+
+    @include breakpoints.md {
+      width: 750px;
+    }
+
+    @include breakpoints.lg {
+      width: 970px;
+    }
+
+    @include breakpoints.xl {
+      width: 1170px;
+    }
+}
