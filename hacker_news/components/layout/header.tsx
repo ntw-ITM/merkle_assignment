@@ -9,14 +9,15 @@ const Header: FC = () => {
   //Used to update height of the spacer div to match height of the header.
   useEffect(() => {
     let timer: ReturnType<typeof setTimeout>;
-    const updateHeight = () => {
+    const updateHeight = (delay: number) => {
       clearTimeout(timer);
       timer = setTimeout(() => {
         setSpacerHeight(headerRef.current?.offsetHeight);
-      }, 100);
+      }, delay);
     }
-    window.addEventListener('resize', updateHeight);
-    return () => window.removeEventListener('resize', updateHeight);
+    updateHeight(500);
+    window.addEventListener('resize', () => {updateHeight(100)});
+    return () => window.removeEventListener('resize', () => {updateHeight(100)});
   }, []);
 
   return (

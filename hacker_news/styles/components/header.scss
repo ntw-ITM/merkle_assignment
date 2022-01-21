@@ -1,4 +1,5 @@
 @use '../abstracts/colors';
+@use '../abstracts/breakpoints';
 
 $border:.1rem solid rgba(0,0,0,.1);
 
@@ -25,7 +26,10 @@ $border:.1rem solid rgba(0,0,0,.1);
     }
   
     .navbar{
-  
+        position: absolute;
+        bottom:100%;
+        transition: none;
+
       a{
         font-size: 1.7rem;
         color: colors.$light-color;
@@ -47,31 +51,12 @@ $border:.1rem solid rgba(0,0,0,.1);
         color: colors.$green;
       }
     } 
-  }
 
-  @media (max-width:768px){
-    .header{
-      .navbar{
-        position: absolute;
-        top:99%; left:0; right:0;
-        background: colors.$white;
-        border-top: $border;
-        border-bottom: $border;
-        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-  
-        &.active{
-          clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    @include breakpoints.md {
+        .navbar {
+            position: initial;
+            bottom: 0;
         }
-  
-        a{
-          margin:1.5rem;
-          padding:1.5rem;
-          background: colors.$light-bg;
-          font-size: 2rem;
-          display: block;
-          border-radius: .5rem;
-        }
-      }
     }
   }
 
