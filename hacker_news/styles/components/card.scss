@@ -1,141 +1,141 @@
-@use '../abstracts/colors';
-@use '../abstracts/breakpoints';
+@use "../abstracts/colors";
+@use "../abstracts/breakpoints";
 
 @mixin grid($val) {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax($val, 1fr));
-    gap: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax($val, 1fr));
+  gap: 1.5rem;
+}
+
+.card-container {
+  @include grid(35rem);
+  @include breakpoints.sm {
+    @include grid(35rem) //45
+;
   }
 
-.card-container{
-  
-    @include grid(35rem);
-    @include breakpoints.sm {
-        @include grid(35rem) //45
-    }
-  
-    font-size: 1.2rem;
-  }
+  font-size: 1.2rem;
+}
 
 .card {
-    display: flex;
-    flex-direction: column;
-    box-shadow: 2px .8rem 1rem colors.$shadow-color-light;
-  }
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 0.8rem 1rem colors.$shadow-color-light;
+}
 
-  .image-data {
-    height: 25rem;
-    position: relative;
-    z-index: 1;
-    overflow: hidden;
-  }
-  
-  .background-image {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-size: cover;
-    z-index: -1;
-    transition: transform 5s;
-  }
-  
-  .card:hover .background-image {
-    transform: scale(1.5);
-  }
+.card-image {
+  height: 25rem;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
 
-  .publication-details {
-    width: 100%;
-    height: 100%;
-    background: colors.$gradient-transparent;
-    font-size: 1.4rem;
-    color: colors.$white;
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding: 1rem;
-    transform: translateY(-100%);
-    transition: transform 0.5s;
-  }
+.background-image {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  z-index: -1;
+  transition: transform 5s;
+}
 
-  .card:hover .publication-details {
-    transform: translateY(0);
-  }
+.card:hover .background-image {
+  transform: scale(1.5);
+}
 
-  .publication-details i {
-    width: 1.2rem;
-    margin-right: 1rem;
-  }
-  
-  .date {
-    display: block;
-  }
+.card-details {
+  width: 100%;
+  height: 100%;
+  background: colors.$gradient-transparent;
+  font-size: 1.4rem;
+  color: colors.$white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 1rem;
+  transform: translateY(-100%);
+  transition: transform 0.5s;
+}
 
-  .post-data {
-    background-color: colors.$white;
-    padding: 2rem 3rem;
-    position: relative;
-  }
+.card:hover .card-details {
+  transform: translateY(0);
+}
 
-  .title{
-    font-size: 3rem;
-    line-height: 1;
-  }
+.card-details i {
+  width: 1.2rem;
+  margin-right: 1rem;
+}
 
-  .subtitle{
-    font-size: 1.2rem;
-    font-weight: 400;
-    text-transform: uppercase;
-    color: colors.$gray;
-    margin: 1rem 0 1.5rem 0;
-  }
+.card-detail {
+  display: block;
+}
 
-  .description {
-    position: relative;
-  }
+.card-data {
+  background-color: colors.$white;
+  padding: 2rem 3rem;
+  position: relative;
+}
 
-  .description::first-letter {
-    margin-left: 1rem;
-  }
+.title {
+  font-size: 3rem;
+  line-height: 1;
+}
 
-  .description::before{
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: .5rem;
-    height: 2rem;
-    background-color: colors.$orange;
-    border-radius: 2rem;
-  }
+.subtitle {
+  font-size: 1.2rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: colors.$gray;
+  margin: 1rem 0 1.5rem 0;
+}
 
-  .cta{
-    text-align: right;
-    font-weight: bold;
-    margin-top: 1rem;
-  }
+.description {
+  position: relative;
+}
 
-  .cta a{
-    background: colors.$gradient;
-    -webkit-background-clip: text;
-    color: transparent;
-    position: relative;
-  }
+.description::first-letter {
+  margin-left: 1rem;
+}
 
-  .cta a::before{
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 3px;
-    background: colors.$gradient;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform .5s;
-  }
+.description::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0.5rem;
+  height: 2rem;
+  background-color: colors.$orange;
+  border-radius: 2rem;
+}
 
-  .cta a:hover::before{
-    transform: scaleX(1);
-  }
+.cta {
+  text-align: right;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+.cta a {
+  background: colors.$gradient;
+  -webkit-background-clip: text;
+  color: transparent;
+  position: relative;
+}
+
+.cta a::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 3px;
+  background: colors.$gradient;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s;
+}
+
+.cta a:hover::before {
+  transform: scaleX(1);
+}

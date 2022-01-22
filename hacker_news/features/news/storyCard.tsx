@@ -12,7 +12,7 @@ const StoryCard: FC<Props> = ({ story, index, loading }) => (
   <>
     {loading && (
       <div className="card">
-        <div className="image-data">
+        <div className="card-image">
           <div className="background-image skeleton" />
         </div>
         <div className="post-data">
@@ -36,25 +36,25 @@ const StoryCard: FC<Props> = ({ story, index, loading }) => (
     )}
     {!loading && story && (
       <div className="card">
-        <div className="image-data">
+        <div className="card-image">
           <div
             className="background-image"
             style={{ background: `url("images/stockimg${index + 1}.jpg") center no-repeat` }}
           />
-          <div className="publication-details">
-            <a href="#" className="date">
+          <div className="card-details">
+            <a href="#" className="card-detail">
               <i className="fas fa-user" />
               {story.author.id}
             </a>
-            <span className="date">
+            <span className="card-detail">
               <i className="fas fa-heart" />
               {`karma: ${story.author.karma}`}
             </span>
-            <span className="date">
+            <span className="card-detail">
               <i className="fas fa-star" />
               {`score: ${story.score}`}
             </span>
-            <span className="date">
+            <span className="card-detail">
               <i className="fas fa-calendar-alt" />
               {`${new Date(story.timestamp * 1000).toLocaleString("en-GB", {
                 month: "numeric",
@@ -64,7 +64,7 @@ const StoryCard: FC<Props> = ({ story, index, loading }) => (
             </span>
           </div>
         </div>
-        <div className="post-data">
+        <div className="card-data">
           <a href={story.url ?? "#"} target="_blank" rel="noreferrer">
             <h1 className="title">{story.title}</h1>
           </a>
