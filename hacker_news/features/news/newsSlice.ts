@@ -2,7 +2,6 @@ import { createAsyncThunk, createSlice, current } from '@reduxjs/toolkit'
 import { fetchItem, fetchTopStories, fetchUser } from './hackernewsAPI'
 import { Story } from './types/story'
 
-
 export interface NewsState {
   stories: Story[],
   status: 'idle' | 'loading' | 'succeeded' | 'failed',

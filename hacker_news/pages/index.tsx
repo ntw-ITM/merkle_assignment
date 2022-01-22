@@ -22,9 +22,10 @@ const Home: NextPage = () => {
 
   return (
     <>
-    <Header />
+    <Header /> 
     <div className="container">
       <section className="card-container">
+        {storiesStatus == 'loading' && [...Array(storiesCount)].map((i) => <StoryCard loading={true} key={i} index={i}/>)}
         {storiesStatus == 'succeeded' && [...stories].sort((a, b) => a.score - b.score).map((story, i) => <StoryCard story={story} key={story.id} index={i}/>)}
       </section>
     </div>

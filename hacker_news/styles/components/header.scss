@@ -1,14 +1,12 @@
 @use '../abstracts/colors';
 @use '../abstracts/breakpoints';
 
-$border:.1rem solid rgba(0,0,0,.1);
-
 .header{
     position: fixed;
     top:0; left:0; right:0;
     z-index: 1000;
     background: colors.$white;
-    box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+    box-shadow: 0 .5rem 1rem colors.$shadow-color;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -24,7 +22,7 @@ $border:.1rem solid rgba(0,0,0,.1);
       color: colors.$black;
   
       i{
-        color: colors.$green;
+        color: colors.$orange;
         padding-right: .5rem;
       }
     }
@@ -36,11 +34,11 @@ $border:.1rem solid rgba(0,0,0,.1);
 
       a{
         font-size: 1.7rem;
-        color: colors.$light-color;
+        color: colors.$gray;
         margin:0 1rem;
   
         &:hover{
-          color: colors.$green;
+          color: colors.$orange;
         }
       }
     }
@@ -49,10 +47,10 @@ $border:.1rem solid rgba(0,0,0,.1);
       font-size: 2.5rem;
       margin-left: 1.7rem;
       cursor: pointer;
-      color: colors.$light-color;
+      color: colors.$gray;
   
       &:hover{
-        color: colors.$green;
+        color: colors.$orange;
       }
     } 
 

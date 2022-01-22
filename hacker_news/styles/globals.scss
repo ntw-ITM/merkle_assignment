@@ -2,6 +2,7 @@
 @use 'components/container';
 @use 'components/card';
 @use 'components/header';
+@use 'components/skeleton';
 @use 'abstracts/breakpoints';
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
@@ -15,12 +16,6 @@
   border: none;
   text-decoration: none;
   transition: .2s linear;
-}
-
-@mixin grid($val) {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax($val, 1fr));
-  gap: 1.5rem;
 }
 
 html {
@@ -40,32 +35,4 @@ html {
 a {
   text-decoration: none;
   color: inherit;
-}
-
-:root{
-  --gradient-color: linear-gradient(to right bottom, rgba(255,119, 48, .8), rgba(255,185, 0, .8));
-}
-
-.btn{
-  margin-top: 1rem;
-  display: inline-block;
-  padding:.8rem 3rem;
-  background: colors.$green;
-  color: colors.$white;
-  font-size: 1.7rem;
-  cursor: pointer;
-
-  &:hover{
-    background: colors.$black;
-  }
-}
-
-.card-container{
-  
-  @include grid(35rem);
-  @include breakpoints.sm {
-      @include grid(45rem)
-  }
-
-  font-size: 1.2rem;
 }

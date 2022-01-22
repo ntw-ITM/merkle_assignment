@@ -1,10 +1,26 @@
 @use '../abstracts/colors';
 @use '../abstracts/breakpoints';
 
+@mixin grid($val) {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax($val, 1fr));
+    gap: 1.5rem;
+  }
+
+.card-container{
+  
+    @include grid(35rem);
+    @include breakpoints.sm {
+        @include grid(35rem) //45
+    }
+  
+    font-size: 1.2rem;
+  }
+
 .card {
     display: flex;
     flex-direction: column;
-    box-shadow: 2px .8rem 1rem rgba(0,0,0,.05);
+    box-shadow: 2px .8rem 1rem colors.$shadow-color-light;
   }
 
   .image-data {
@@ -32,7 +48,7 @@
   .publication-details {
     width: 100%;
     height: 100%;
-    background: colors.$gradient;
+    background: colors.$gradient-transparent;
     font-size: 1.4rem;
     color: colors.$white;
     position: absolute;
@@ -71,7 +87,7 @@
     font-size: 1.2rem;
     font-weight: 400;
     text-transform: uppercase;
-    color: #a2a2a2;
+    color: colors.$gray;
     margin: 1rem 0 1.5rem 0;
   }
 
@@ -101,7 +117,7 @@
   }
 
   .cta a{
-    background: colors.$gradient2;
+    background: colors.$gradient;
     -webkit-background-clip: text;
     color: transparent;
     position: relative;
@@ -114,7 +130,7 @@
     bottom: 0;
     width: 100%;
     height: 3px;
-    background: colors.$gradient2;
+    background: colors.$gradient;
     transform: scaleX(0);
     transform-origin: left;
     transition: transform .5s;
