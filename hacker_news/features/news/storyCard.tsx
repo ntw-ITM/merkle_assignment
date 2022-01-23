@@ -15,7 +15,7 @@ const StoryCard: FC<Props> = ({ story, index, loading }) => (
         <div className="card-image">
           <div className="background-image skeleton" />
         </div>
-        <div className="post-data">
+        <div className="card-data">
           <h1 className="title skeleton skeleton-header">
             <br />
           </h1>

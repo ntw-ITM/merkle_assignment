@@ -9,11 +9,6 @@
 
 .card-container {
   @include grid(35rem);
-  @include breakpoints.sm {
-    @include grid(35rem) //45
-;
-  }
-
   font-size: 1.2rem;
 }
 
