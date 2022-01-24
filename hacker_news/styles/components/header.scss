@@ -1,0 +1,67 @@
+@use '../abstracts/colors';
+@use '../abstracts/breakpoints';
+
+.header{
+    position: fixed;
+    top:0; left:0; right:0;
+    z-index: 1000;
+    background: colors.$white;
+    box-shadow: 0 .5rem 1rem colors.$shadow-color;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding:2rem;
+
+    @include breakpoints.lg {
+        padding: 2rem 9%;
+    }
+  
+    .logo{
+      font-size: 2.5rem;
+      font-weight: bolder;
+      color: colors.$black;
+  
+      i{
+        color: colors.$orange;
+        padding-right: .5rem;
+      }
+    }
+  
+    .navbar{
+        position: absolute;
+        bottom:100%;
+        transition: none;
+
+      a{
+        font-size: 1.7rem;
+        color: colors.$gray;
+        margin:0 1rem;
+  
+        &:hover{
+          color: colors.$orange;
+        }
+      }
+    }
+  
+    .icons div{
+      font-size: 2.5rem;
+      margin-left: 1.7rem;
+      cursor: pointer;
+      color: colors.$gray;
+  
+      &:hover{
+        color: colors.$orange;
+      }
+    } 
+
+    @include breakpoints.md {
+        .navbar {
+            position: initial;
+            bottom: 0;
+        }
+    }
+  }
+
+  .header-spacer {
+    margin-bottom: 2rem;
+  }
